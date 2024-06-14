@@ -278,7 +278,7 @@ spec:
                 [Service]
                 Type=oneshot
                 User=root
-                ExecStart=/bin/sh -c "sed -i s/CLIST=/CLIST="-c ${ISOLATED_CPU_CORES}"/ /etc/stalld.conf"
+                ExecStart=/bin/sh -c "sed -i 's/^CLIST=$/CLIST=\"-c ${ISOLATED_CPU_CORES}\"/' /etc/stalld.conf"
                 ExecStartPost=/bin/sh -c "systemctl enable stalld.service"
                 [Install]
                 WantedBy=multi-user.target
